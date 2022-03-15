@@ -34,53 +34,59 @@ export default function Forecast() {
 
   return (
     <>
-      <h1>Forecast</h1>
-      <TextField
-        label="Street"
-        variant="outlined"
-        size="small"
-        inputRef={streetRef}
-        type="text"
-        className="text-field"
-        id="street-field"
-      />
-      <TextField
-        label="City"
-        variant="outlined"
-        size="small"
-        inputRef={cityRef}
-        type="text"
-        className="text-field"
-      />
-      <TextField
-        label="State"
-        variant="outlined"
-        size="small"
-        inputRef={stateRef}
-        type="text"
-        className="text-field"
-      />
-      <TextField
-        label="Zipcode"
-        variant="outlined"
-        size="small"
-        inputRef={zipcodeRef}
-        type="text"
-        className="text-field"
-      />
-      <Button variant="contained" onClick={handleOnClick}>
-        Search
-      </Button>
+      <h1 className="title">Forecast</h1>
 
+      <div className="form-filter">
+        <TextField
+          label="Street"
+          variant="outlined"
+          size="small"
+          inputRef={streetRef}
+          type="text"
+          className="text-field"
+          id="street-field"
+        />
+        <TextField
+          label="City"
+          variant="outlined"
+          size="small"
+          inputRef={cityRef}
+          type="text"
+          className="text-field"
+        />
+        <TextField
+          label="State"
+          variant="outlined"
+          size="small"
+          inputRef={stateRef}
+          type="text"
+          className="text-field"
+        />
+        <TextField
+          label="Zipcode"
+          variant="outlined"
+          size="small"
+          inputRef={zipcodeRef}
+          type="text"
+          className="text-field"
+        />
+        <Button variant="contained" onClick={handleOnClick}>
+          Search
+        </Button>
+      </div>
       {forecastResponse &&
         forecastResponse.periods.map((forecast, index) => {
           return <ForecastCard key={index} forecast={forecast} />;
         })}
 
-{errors && 
-    errors.map((error, index) => {
-        return <p className="errorMessage" key={index} >{error}</p>
-    })}
+      {errors &&
+        errors.map((error, index) => {
+          return (
+            <p className="errorMessage" key={index}>
+              {error}
+            </p>
+          );
+        })}
     </>
   );
 }

@@ -5,3 +5,7 @@
 .errorMessage{
     color: red;
 }
+
+.form-filter, .title{
+    margin: 1%;
+}
